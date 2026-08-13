@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://wcgffsn3jtxm"]
+
+[ext_resource type="PackedScene" uid="uid://dekutn00rkxyt" path="res://scenes/player/player.tscn" id="1_4i10p"]
+[ext_resource type="Script" uid="uid://bb1igylycg02p" path="res://scenes/map/classroom.gd" id="1_cwqeo"]
+[ext_resource type="Texture2D" uid="uid://c4fmvje56javp" path="res://icon.svg" id="2_xy0bc"]
+[ext_resource type="PackedScene" uid="uid://81gd8m8k1frc" path="res://scenes/npcs/npc.tscn" id="3_xy0bc"]
+
+[sub_resource type="TileSet" id="TileSet_4lohb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwqeo"]
+size = Vector2(13.00019, 1.263881)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xy0bc"]
+size = Vector2(13.500095, 1.2819229)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lohb"]
+size = Vector2(20.006586, 0.99999994)
+
+[node name="Classroom" type="Node2D" unique_id=397605161]
+script = ExtResource("1_cwqeo")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1125118245]
+tile_set = SubResource("TileSet_4lohb")
+
+[node name="Background" type="Node2D" parent="." unique_id=1007993575]
+
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=1379639334]
+offset_right = 800.0
+offset_bottom = 500.0
+color = Color(1, 1, 0.8, 1)
+
+[node name="Objects" type="Node2D" parent="." unique_id=1214683271]
+
+[node name="Chair" type="Sprite2D" parent="Objects" unique_id=1454237550]
+position = Vector2(337, 178)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_xy0bc")
+
+[node name="NPCs" type="Node2D" parent="." unique_id=283997596]
+
+[node name="Professora" parent="NPCs" unique_id=2072700294 instance=ExtResource("3_xy0bc")]
+position = Vector2(82, 449)
+scale = Vector2(1, 1)
+
+[node name="Player" parent="." unique_id=711855411 instance=ExtResource("1_4i10p")]
+position = Vector2(337, 178)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1789403110]
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1468480713]
+position = Vector2(337, 178)
+
+[node name="Walls" type="Node2D" parent="." unique_id=2012697737]
+
+[node name="RightWall" type="StaticBody2D" parent="Walls" unique_id=631003794]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall" unique_id=1297104127]
+position = Vector2(-12.656131, 260.00027)
+rotation = -1.5707573
+scale = Vector2(40, 20)
+shape = SubResource("RectangleShape2D_cwqeo")
+
+[node name="LeftWall" type="StaticBody2D" parent="Walls" unique_id=1392342257]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall" unique_id=1260837566]
+position = Vector2(812.8192, 249.9981)
+rotation = -1.5707573
+scale = Vector2(40, 20)
+shape = SubResource("RectangleShape2D_xy0bc")
+
+[node name="BottomWall" type="StaticBody2D" parent="Walls" unique_id=945257017]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall" unique_id=2000753424]
+position = Vector2(399.73645, 510)
+scale = Vector2(40, 20)
+shape = SubResource("RectangleShape2D_4lohb")
+
+[node name="TopWall" type="StaticBody2D" parent="Walls" unique_id=1590326288]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall" unique_id=1639768546]
+position = Vector2(399.86823, -10)
+scale = Vector2(40, 20)
+shape = SubResource("RectangleShape2D_4lohb")
