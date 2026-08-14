@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://bb1igylycg02p" path="res://scenes/map/classroom.gd" id="1_cwqeo"]
 [ext_resource type="Texture2D" uid="uid://c4fmvje56javp" path="res://icon.svg" id="2_xy0bc"]
 [ext_resource type="PackedScene" uid="uid://81gd8m8k1frc" path="res://scenes/npcs/npc.tscn" id="3_xy0bc"]
+[ext_resource type="Script" uid="uid://b20efwepuxbim" path="res://dialogue.gd" id="5_qmvgv"]
+[ext_resource type="FontFile" uid="uid://m0u06dfqto8e" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="6_evsgb"]
+[ext_resource type="Script" uid="uid://bp06hwfclme07" path="res://script/missions.gd" id="7_nir4y"]
 
 [sub_resource type="TileSet" id="TileSet_4lohb"]
 
@@ -15,6 +18,20 @@ size = Vector2(13.500095, 1.2819229)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lohb"]
 size = Vector2(20.006586, 0.99999994)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jya7e"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 20
 
 [node name="Classroom" type="Node2D" unique_id=397605161]
 script = ExtResource("1_cwqeo")
@@ -46,6 +63,11 @@ scale = Vector2(1, 1)
 position = Vector2(337, 178)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1789403110]
+zoom = Vector2(1.46, 1.3)
+limit_left = 300
+limit_top = 200
+limit_right = 500
+limit_bottom = 300
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1468480713]
 position = Vector2(337, 178)
@@ -81,3 +103,78 @@ shape = SubResource("RectangleShape2D_4lohb")
 position = Vector2(399.86823, -10)
 scale = Vector2(40, 20)
 shape = SubResource("RectangleShape2D_4lohb")
+
+[node name="dialogue" type="CanvasLayer" parent="." unique_id=850825038]
+script = ExtResource("5_qmvgv")
+
+[node name="Panel" type="Panel" parent="dialogue" unique_id=1251724391]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -370.0
+offset_top = -120.0
+offset_right = 330.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jya7e")
+
+[node name="DialogueLabel" type="Label" parent="dialogue/Panel" unique_id=71987866]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 2.9999685
+offset_right = 378.0
+offset_bottom = 47.99997
+scale = Vector2(2.5, 2.5)
+theme_override_fonts/font = ExtResource("6_evsgb")
+text = "BOM DIA
+"
+autowrap_mode = 3
+
+[node name="NameLabel" type="Label" parent="dialogue/Panel" unique_id=1519367004]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 707.0
+offset_bottom = 111.0
+scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("6_evsgb")
+text = "Professora:
+"
+
+[node name="ContinueLabel" type="Label" parent="dialogue/Panel" unique_id=1619187929]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 95.0
+offset_right = 735.0
+offset_bottom = 120.0
+text = "[ENTER]"
+
+[node name="missions" type="CanvasLayer" parent="." unique_id=1642212399]
+script = ExtResource("7_nir4y")
+
+[node name="ColorRect" type="ColorRect" parent="missions" unique_id=1094358396]
+offset_left = 673.0
+offset_right = 1152.0
+offset_bottom = 275.0
+color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Label" parent="missions" unique_id=411487716]
+offset_left = 692.0
+offset_top = 8.0
+offset_right = 760.0
+offset_bottom = 31.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("6_evsgb")
+text = "MISSÕES:"
+
+[node name="MissionList" type="Label" parent="missions" unique_id=1357244098]
+offset_left = 689.0
+offset_top = 41.0
+offset_right = 986.3334
+offset_bottom = 189.66667
+scale = Vector2(1.2, 1.2)
+theme_override_fonts/font = ExtResource("6_evsgb")
+text = "Nenhuma missão recebida."
+autowrap_mode = 3
