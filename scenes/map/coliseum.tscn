@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ty8fhb2xqnmn"]
+
+[ext_resource type="PackedScene" uid="uid://dekutn00rkxyt" path="res://scenes/player/player.tscn" id="1_6cxs5"]
+
+[node name="Coliseum" type="Node2D" unique_id=1260014534]
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1099546421]
+color = Color(0.84705883, 0.54901963, 0.34509805, 1)
+polygon = PackedVector2Array(-584, -328, 581, -322, 585, 321, -579, 319)
+uv = PackedVector2Array(-100.66701, -58.666664, 40.66632, -60.666664, 39.999664, 0, -106.000336, 0.66667175)
+
+[node name="Player" parent="." unique_id=711855411 instance=ExtResource("1_6cxs5")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1012329276]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=351653943]

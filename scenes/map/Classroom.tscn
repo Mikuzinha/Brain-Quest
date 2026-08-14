@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b20efwepuxbim" path="res://dialogue.gd" id="5_qmvgv"]
 [ext_resource type="FontFile" uid="uid://m0u06dfqto8e" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="6_evsgb"]
 [ext_resource type="Script" uid="uid://bp06hwfclme07" path="res://script/missions.gd" id="7_nir4y"]
+[ext_resource type="PackedScene" uid="uid://csqsasl8wdc52" path="res://time_portal.tscn" id="8_jya7e"]
 
 [sub_resource type="TileSet" id="TileSet_4lohb"]
 
@@ -42,6 +43,7 @@ tile_set = SubResource("TileSet_4lohb")
 [node name="Background" type="Node2D" parent="." unique_id=1007993575]
 
 [node name="ColorRect" type="ColorRect" parent="Background" unique_id=1379639334]
+offset_left = -7.0
 offset_right = 800.0
 offset_bottom = 500.0
 color = Color(1, 1, 0.8, 1)
@@ -178,3 +180,7 @@ scale = Vector2(1.2, 1.2)
 theme_override_fonts/font = ExtResource("6_evsgb")
 text = "Nenhuma missão recebida."
 autowrap_mode = 3
+
+[node name="TimePortal" parent="." unique_id=2133624978 instance=ExtResource("8_jya7e")]
+position = Vector2(769, 467)
+scale = Vector2(0.5, 0.5)
