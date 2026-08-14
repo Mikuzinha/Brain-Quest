@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b20efwepuxbim" path="res://dialogue.gd" id="5_qmvgv"]
 [ext_resource type="FontFile" uid="uid://m0u06dfqto8e" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="6_evsgb"]
 [ext_resource type="Script" uid="uid://bp06hwfclme07" path="res://script/missions.gd" id="7_nir4y"]
+[ext_resource type="Script" uid="uid://bnw0o17hg3ctc" path="res://script/notification_ui.gd" id="8_jya7e"]
 
 [sub_resource type="TileSet" id="TileSet_4lohb"]
 
@@ -104,7 +105,7 @@ position = Vector2(399.86823, -10)
 scale = Vector2(40, 20)
 shape = SubResource("RectangleShape2D_4lohb")
 
-[node name="dialogue" type="CanvasLayer" parent="." unique_id=850825038]
+[node name="dialogue" type="CanvasLayer" parent="." unique_id=850825038 groups=["dialogue"]]
 script = ExtResource("5_qmvgv")
 
 [node name="Panel" type="Panel" parent="dialogue" unique_id=1251724391]
@@ -122,11 +123,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jya7e")
 
 [node name="DialogueLabel" type="Label" parent="dialogue/Panel" unique_id=71987866]
 layout_mode = 0
-offset_left = 208.0
-offset_top = 2.9999685
-offset_right = 378.0
-offset_bottom = 47.99997
-scale = Vector2(2.5, 2.5)
+offset_left = 207.0
+offset_top = 4.999981
+offset_right = 477.55557
+offset_bottom = 65.55556
+scale = Vector2(1.8, 1.8)
 theme_override_fonts/font = ExtResource("6_evsgb")
 text = "BOM DIA
 "
@@ -134,10 +135,10 @@ autowrap_mode = 3
 
 [node name="NameLabel" type="Label" parent="dialogue/Panel" unique_id=1519367004]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 6.0
-offset_right = 707.0
-offset_bottom = 111.0
+offset_left = 10.0
+offset_top = 1.0
+offset_right = 708.0
+offset_bottom = 106.0
 scale = Vector2(2, 2)
 theme_override_fonts/font = ExtResource("6_evsgb")
 text = "Professora:
@@ -145,22 +146,22 @@ text = "Professora:
 
 [node name="ContinueLabel" type="Label" parent="dialogue/Panel" unique_id=1619187929]
 layout_mode = 0
-offset_left = 635.0
-offset_top = 95.0
-offset_right = 735.0
-offset_bottom = 120.0
+offset_left = 7.0
+offset_top = 93.0
+offset_right = 107.0
+offset_bottom = 118.0
 text = "[ENTER]"
 
-[node name="missions" type="CanvasLayer" parent="." unique_id=1642212399]
+[node name="MissionUI" type="CanvasLayer" parent="." unique_id=1642212399]
 script = ExtResource("7_nir4y")
 
-[node name="ColorRect" type="ColorRect" parent="missions" unique_id=1094358396]
+[node name="ColorRect" type="ColorRect" parent="MissionUI" unique_id=1094358396]
 offset_left = 673.0
 offset_right = 1152.0
 offset_bottom = 275.0
 color = Color(0, 0, 0, 1)
 
-[node name="Title" type="Label" parent="missions" unique_id=411487716]
+[node name="Title" type="Label" parent="MissionUI" unique_id=411487716]
 offset_left = 692.0
 offset_top = 8.0
 offset_right = 760.0
@@ -169,12 +170,30 @@ scale = Vector2(1.5, 1.5)
 theme_override_fonts/font = ExtResource("6_evsgb")
 text = "MISSÕES:"
 
-[node name="MissionList" type="Label" parent="missions" unique_id=1357244098]
+[node name="MissionList" type="Label" parent="MissionUI" unique_id=1357244098]
 offset_left = 689.0
 offset_top = 41.0
 offset_right = 986.3334
 offset_bottom = 189.66667
-scale = Vector2(1.2, 1.2)
+scale = Vector2(1.4, 1.4)
 theme_override_fonts/font = ExtResource("6_evsgb")
 text = "Nenhuma missão recebida."
 autowrap_mode = 3
+
+[node name="NotificationUI" type="CanvasLayer" parent="." unique_id=2071432019]
+script = ExtResource("8_jya7e")
+
+[node name="Panel" type="Panel" parent="NotificationUI" unique_id=1354753190]
+offset_right = 384.0
+offset_bottom = 68.0
+
+[node name="NotificationLabel" type="Label" parent="NotificationUI/Panel" unique_id=1947516224]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 289.0
+offset_bottom = 61.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("6_evsgb")
+text = "Nova missão recebida!
+Aperte J para ver suas missões"

@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://81gd8m8k1frc"]
 
 [ext_resource type="Texture2D" uid="uid://c4fmvje56javp" path="res://icon.svg" id="1_ivh6b"]
+[ext_resource type="Script" uid="uid://yrccbdnk8fdc" path="res://script/npc.gd" id="1_m5fb5"]
+[ext_resource type="FontFile" uid="uid://m0u06dfqto8e" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="3_5ejjj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lohb"]
 size = Vector2(133.33334, 133.33334)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4lohb"]
+
 [node name="NPC" type="CharacterBody2D" unique_id=2072700294]
 scale = Vector2(0.3, 0.3)
+script = ExtResource("1_m5fb5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=914534525]
 scale = Vector2(0.3, 0.3)
@@ -16,3 +21,24 @@ texture = ExtResource("1_ivh6b")
 position = Vector2(7.947286e-07, 7.947286e-07)
 scale = Vector2(0.3, 0.3)
 shape = SubResource("RectangleShape2D_4lohb")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1862310383]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=879225696]
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_4lohb")
+
+[node name="InteractionLabel" type="Label" parent="InteractionArea" unique_id=428361827]
+offset_left = -50.0
+offset_top = -63.333332
+offset_right = 53.0
+offset_bottom = -40.333332
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_5ejjj")
+text = "[E] Conversar"
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]

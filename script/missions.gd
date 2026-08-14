@@ -2,14 +2,7 @@ extends CanvasLayer
 
 @onready var mission_list = $MissionList
 
-var missions = [
-	"🟡 O Mistério da História",
-
-"Descubra em que ano aconteceu",
-"determinado acontecimento histórico.",
-
-"Status: EM ANDAMENTO"
-]
+var missions = []
 
 
 func _ready():
@@ -26,5 +19,21 @@ func _input(event):
 func atualizar_missoes():
 	mission_list.text = ""
 
-	for mission in missions:
-		mission_list.text += mission + "\n\n"
+	if missions.is_empty():
+		mission_list.text = "Nenhuma missão ainda."
+	else:
+		for mission in missions:
+			mission_list.text += "🟡 " + mission["titulo"] + "\n"
+			mission_list.text += mission["descricao"] + "\n"
+			mission_list.text += "Status: " + mission["status"] + "\n\n"
+
+
+func adicionar_missao(titulo, descricao):
+	var nova_missao = {
+		"titulo": titulo,
+		"descricao": descricao,
+		"status": "EM ANDAMENTO"
+	}
+	
+	missions.append(nova_missao)
+	atualizar_missoes()
