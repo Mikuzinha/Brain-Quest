@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var panel = $Panel
 @onready var label = $Panel/DialogueLabel
 
-# Diálogo que acontece quando o jogo começa
+
 var falas_aula = [
 	"Bom dia, turma!",
 	"Hoje vamos começar uma viagem pela História.",
@@ -14,7 +14,7 @@ var falas_aula = [
 	"O Coliseu!"
 ]
 
-# Diálogo quando o jogador conversa com a professora
+
 var falas_professora = [
 	"Ah, você quer começar sua primeira missão?",
 	"Então vamos conhecer o Coliseu.",
@@ -27,6 +27,25 @@ var falas_professora = [
 	"volte para mim."
 ]
 
+
+var falas_gladiador = [
+	"Eu luto aqui diante de milhares de pessoas.",
+	"Os combates entre gladiadores são uma das atrações do Coliseu."
+]
+
+
+var falas_cidadao = [
+	"O Coliseu recebe muitos espetáculos.",
+	"É um lugar onde muitos romanos vêm se divertir."
+]
+
+
+var falas_imperador = [
+	"Eu venho ao Coliseu para assistir aos grandes espetáculos.",
+	"É impressionante ver tantos romanos reunidos neste lugar."
+]
+
+
 var falas = []
 var fala_atual = 0
 
@@ -34,6 +53,7 @@ var fala_atual = 0
 func _ready():
 	falas = falas_aula
 	visible = true
+	get_parent().get_node("Player").can_move = false
 	mostrar_fala()
 
 
@@ -58,16 +78,6 @@ func proxima_fala():
 	else:
 		mostrar_fala()
 
-func entregar_missao():
-	var mission_ui = get_parent().get_node("MissionUI")
-	
-	mission_ui.adicionar_missao(
-	"Ecos do Coliseu",
-	"Viaje até a Roma Antiga e descubra como o Coliseu era utilizado, quem participava dos eventos e qual era sua importância para a sociedade romana.."
-)
-	
-	var notification_ui = get_parent().get_node("NotificationUI")
-	notification_ui.mostrar_notificacao()
 
 func iniciar_dialogo():
 	falas = falas_professora
@@ -75,3 +85,32 @@ func iniciar_dialogo():
 	visible = true
 	get_parent().get_node("Player").can_move = false
 	mostrar_fala()
+
+
+func iniciar_dialogo_npc(tipo):
+	if tipo == "gladiador":
+		falas = falas_gladiador
+	
+	elif tipo == "cidadao":
+		falas = falas_cidadao
+	
+	elif tipo == "imperador":
+		falas = falas_imperador
+
+	fala_atual = 0
+	visible = true
+	get_parent().get_node("Player").can_move = false
+	mostrar_fala()
+
+
+func entregar_missao():
+	MissionManager.adicionar_missao(
+		"Ecos do Coliseu",
+		"Viaje até a Roma Antiga e descubra como o Coliseu era utilizado e qual era sua importância para os romanos."
+	)
+	
+	var portal = get_parent().get_node("TimePortal")
+	portal.ativar_portal()
+	
+	var notification_ui = get_parent().get_node("NotificationUI")
+	notification_ui.mostrar_notificacao()

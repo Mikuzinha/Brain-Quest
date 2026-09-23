@@ -1,25 +1,14 @@
 [gd_scene format=3 uid="uid://wcgffsn3jtxm"]
 
 [ext_resource type="PackedScene" uid="uid://dekutn00rkxyt" path="res://scenes/player/player.tscn" id="1_4i10p"]
+[ext_resource type="Script" uid="uid://bb1igylycg02p" path="res://scenes/map/classroom.gd" id="1_cwqeo"]
 [ext_resource type="Texture2D" uid="uid://y1wckfai5tc4" path="res://assets/maps/Sala de aula.png" id="2_ih6y4"]
 [ext_resource type="PackedScene" uid="uid://81gd8m8k1frc" path="res://scenes/npcs/npc.tscn" id="3_xy0bc"]
 [ext_resource type="Script" uid="uid://b20efwepuxbim" path="res://dialogue.gd" id="5_qmvgv"]
 [ext_resource type="FontFile" uid="uid://m0u06dfqto8e" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="6_evsgb"]
 [ext_resource type="Script" uid="uid://bp06hwfclme07" path="res://script/missions.gd" id="7_nir4y"]
 [ext_resource type="Script" uid="uid://bnw0o17hg3ctc" path="res://script/notification_ui.gd" id="8_jya7e"]
-[ext_resource type="PackedScene" uid="uid://dmufck6m2112q" path="res://scenes/map/time_portal.tscn" id="9_d6heu"]
-[ext_resource type="AudioStream" uid="uid://b5vhhxyko85l2" path="res://audio/music for bk.mp3" id="9_ih6y4"]
-
-[sub_resource type="GDScript" id="GDScript_jya7e"]
-script/source = "extends Node2D
-
-@onready var player = $Player
-@onready var spawn_point = $SpawnPoint
-
-
-func _ready():
-	player.position = spawn_point.position
-"
+[ext_resource type="PackedScene" uid="uid://csqsasl8wdc52" path="res://scenes/map/time_portal.tscn" id="9_d6heu"]
 
 [sub_resource type="TileSet" id="TileSet_4lohb"]
 
@@ -31,24 +20,6 @@ size = Vector2(13.500095, 1.2819229)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lohb"]
 size = Vector2(20.00988, 0.99999994)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6heu"]
-size = Vector2(1.137517, 2.3911033)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ih6y4"]
-size = Vector2(1.137517, 2.4455516)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6eae0"]
-size = Vector2(1.9749961, 2.2227798)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_avlbu"]
-size = Vector2(0.656247, 1.1057132)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_52gut"]
-size = Vector2(1.0531166, 1.152858)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6v16p"]
-size = Vector2(1.0531166, 2.7264304)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jya7e"]
 bg_color = Color(0, 0, 0, 1)
@@ -65,17 +36,17 @@ corner_radius_bottom_left = 2
 corner_detail = 20
 
 [node name="Classroom" type="Node2D" unique_id=397605161]
-script = SubResource("GDScript_jya7e")
+script = ExtResource("1_cwqeo")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1004890448]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1125118245]
+tile_set = SubResource("TileSet_4lohb")
+
+[node name="Background2" type="Sprite2D" parent="." unique_id=1004890448]
 position = Vector2(400, 250.00002)
 scale = Vector2(0.4784689, 0.53134966)
 texture = ExtResource("2_ih6y4")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Background" unique_id=1125118245]
-position = Vector2(-836.00006, -470.50003)
-scale = Vector2(2.0900002, 1.882)
-tile_set = SubResource("TileSet_4lohb")
+[node name="Objects" type="Node2D" parent="." unique_id=1214683271]
 
 [node name="NPCs" type="Node2D" parent="." unique_id=283997596]
 
@@ -127,102 +98,6 @@ shape = SubResource("RectangleShape2D_4lohb")
 position = Vector2(403, 108)
 scale = Vector2(40, 20)
 shape = SubResource("RectangleShape2D_4lohb")
-
-[node name="Objetos" type="StaticBody2D" parent="Walls" unique_id=197923055]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Objetos" unique_id=1394788902]
-position = Vector2(278.089, 217.2486)
-rotation = -1.5707573
-scale = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_d6heu")
-
-[node name="Mesa2" type="StaticBody2D" parent="Walls/Objetos" unique_id=95105206]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Objetos/Mesa2" unique_id=675164129]
-position = Vector2(396.54453, 217.00003)
-rotation = -1.5707573
-scale = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_ih6y4")
-
-[node name="Mesa3" type="StaticBody2D" parent="Walls/Objetos" unique_id=1478287721]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Objetos/Mesa3" unique_id=518281846]
-position = Vector2(512, 217.00002)
-rotation = -1.5707573
-scale = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_ih6y4")
-
-[node name="Mesa4" type="StaticBody2D" parent="Walls/Objetos/Mesa3" unique_id=1396828939]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Objetos/Mesa3/Mesa4" unique_id=1872417686]
-position = Vector2(278, 298)
-rotation = -1.5707573
-scale = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_ih6y4")
-
-[node name="Mesa5" type="StaticBody2D" parent="Walls/Objetos/Mesa3/Mesa4" unique_id=1258434280]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5" unique_id=1289923351]
-position = Vector2(512, 298.00003)
-rotation = -1.5707573
-scale = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_ih6y4")
-
-[node name="Mesa6" type="StaticBody2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5" unique_id=14762378]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5/Mesa6" unique_id=975672958]
-position = Vector2(512, 380)
-rotation = -1.5707573
-scale = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_ih6y4")
-
-[node name="Mesa7" type="StaticBody2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5/Mesa6" unique_id=552466245]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5/Mesa6/Mesa7" unique_id=1775891837]
-position = Vector2(396, 380)
-rotation = -1.5707573
-scale = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_ih6y4")
-
-[node name="Mesa8" type="StaticBody2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5/Mesa6/Mesa7" unique_id=1439421609]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5/Mesa6/Mesa7/Mesa8" unique_id=767592770]
-position = Vector2(278.00003, 380)
-rotation = -1.5707573
-scale = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_ih6y4")
-
-[node name="Armário" type="StaticBody2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5/Mesa6/Mesa7/Mesa8" unique_id=2093064340]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5/Mesa6/Mesa7/Mesa8/Armário" unique_id=618427263]
-position = Vector2(534.77155, 104.49983)
-rotation = -1.5707573
-scale = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_6eae0")
-
-[node name="Lixo" type="StaticBody2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5/Mesa6/Mesa7/Mesa8/Armário" unique_id=1850714905]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5/Mesa6/Mesa7/Mesa8/Armário/Lixo" unique_id=904868479]
-position = Vector2(626.94275, 161.8749)
-rotation = -1.5707573
-scale = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_avlbu")
-
-[node name="Lixo" type="StaticBody2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5/Mesa6/Mesa7/Mesa8/Armário/Lixo" unique_id=753359765]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5/Mesa6/Mesa7/Mesa8/Armário/Lixo/Lixo" unique_id=1933224046]
-position = Vector2(173.47118, 122.93742)
-rotation = -1.5707573
-scale = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_52gut")
-
-[node name="Lixo" type="StaticBody2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5/Mesa6/Mesa7/Mesa8/Armário/Lixo/Lixo" unique_id=900787286]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Objetos/Mesa3/Mesa4/Mesa5/Mesa6/Mesa7/Mesa8/Armário/Lixo/Lixo/Lixo" unique_id=1935415132]
-position = Vector2(256.73572, 152.00061)
-rotation = -1.5707573
-scale = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_6v16p")
 
 [node name="dialogue" type="CanvasLayer" parent="." unique_id=850825038 groups=["dialogue"]]
 script = ExtResource("5_qmvgv")
@@ -317,12 +192,7 @@ theme_override_fonts/font = ExtResource("6_evsgb")
 text = "Nova missão recebida!
 Aperte J para ver suas missões"
 
-[node name="TimePortal" parent="." unique_id=42273545 instance=ExtResource("9_d6heu")]
+[node name="TimePortal" parent="." unique_id=2133624978 instance=ExtResource("9_d6heu")]
 visible = false
-position = Vector2(617.00006, 386)
-scale = Vector2(0.1, 0.1)
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1642650847]
-stream = ExtResource("9_ih6y4")
-volume_db = 24.0
-autoplay = true
+position = Vector2(608, 382)
+scale = Vector2(0.3, 0.3)

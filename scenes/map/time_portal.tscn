@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dmufck6m2112q"]
+
+[ext_resource type="Script" uid="uid://d11dvy68xcrit" path="res://script/time_portal.gd" id="1_wf0d1"]
+[ext_resource type="Texture2D" uid="uid://dw4xcxq55btqj" path="res://assets/maps/Portal.png" id="2_p8tlx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u4hob"]
+radius = 178.98393
+
+[node name="TimePortal" type="Area2D" unique_id=42273545]
+script = ExtResource("1_wf0d1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1748013059]
+texture = ExtResource("2_p8tlx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=706632411]
+position = Vector2(41, 11)
+scale = Vector2(0.7, 3.5)
+shape = SubResource("CircleShape2D_u4hob")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

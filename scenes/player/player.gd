@@ -25,3 +25,7 @@ func _physics_process(_delta: float) -> void:
 		velocity = Vector2.ZERO
 
 	move_and_slide()
+
+
+func _on_interaction_area_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
