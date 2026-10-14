@@ -14,7 +14,7 @@
 [sub_resource type="TileSet" id="TileSet_or2sg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4lohb"]
-radius = 30.149628
+radius = 48.507732
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajssx"]
 size = Vector2(17.84999, 1.263881)
@@ -146,7 +146,7 @@ size = Vector2(7.120073, 3.874999)
 size = Vector2(1.4950728, 5.325)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7rt7g"]
-size = Vector2(1.8725364, 5.325)
+size = Vector2(1.8725364, 4.962501)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sy1k"]
 size = Vector2(2.4112682, 5.325)
@@ -215,6 +215,7 @@ tile_set = SubResource("TileSet_or2sg")
 
 [node name="Player" parent="." unique_id=711855411 instance=ExtResource("1_6cxs5")]
 position = Vector2(89, 301)
+scale = Vector2(0.9, 0.9)
 
 [node name="NPCs" type="Node2D" parent="." unique_id=2123097817]
 
@@ -621,7 +622,7 @@ scale = Vector2(40, 20)
 shape = SubResource("RectangleShape2D_488p8")
 
 [node name="CollisionShape2D46" type="CollisionShape2D" parent="Walls/Casas" unique_id=1437147170]
-position = Vector2(658.45074, -105.00002)
+position = Vector2(658.45074, -108.62501)
 scale = Vector2(40, 20)
 shape = SubResource("RectangleShape2D_7rt7g")
 
