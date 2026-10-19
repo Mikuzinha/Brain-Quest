@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bjj322oyieanr" path="res://scenes/map/npc_rei.gd" id="6_evk3x"]
 [ext_resource type="Script" uid="uid://d1xkfrx66yuv3" path="res://scenes/map/coliseum_dialogue.gd.gd" id="6_wwxms"]
 [ext_resource type="AudioStream" uid="uid://d4lhjs7tfyulb" path="res://audio/music for bk atena.mp3" id="10_kg5ah"]
+[ext_resource type="Script" uid="uid://cti3ik2yheks3" path="res://scenes/map/tp_coliseu.gd" id="11_6fs3k"]
 
 [sub_resource type="TileSet" id="TileSet_or2sg"]
 
@@ -200,6 +201,9 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 corner_detail = 20
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4k1k"]
+size = Vector2(55.229034, 68.999985)
 
 [node name="Coliseum" type="Node2D" unique_id=1260014534]
 
@@ -765,10 +769,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_x3ca0")
 
 [node name="DialogueLabel" type="Label" parent="dialogue/Panel" unique_id=762269420]
 layout_mode = 0
-offset_left = 207.0
-offset_top = 4.999981
-offset_right = 477.55557
-offset_bottom = 65.55556
+offset_left = 316.0
+offset_top = 4.0000052
+offset_right = 526.0
+offset_bottom = 65.11112
 scale = Vector2(1.8, 1.8)
 theme_override_fonts/font = ExtResource("3_ss1mo")
 text = "BOM DIA
@@ -797,9 +801,21 @@ text = "[ENTER]"
 stream = ExtResource("10_kg5ah")
 autoplay = true
 
+[node name="TP_Coliseu" type="Area2D" parent="." unique_id=1409139266]
+position = Vector2(332, -182.00002)
+scale = Vector2(1, 1.0000001)
+script = ExtResource("11_6fs3k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TP_Coliseu" unique_id=2084877866]
+position = Vector2(-7.6293945e-06, -3.8146973e-06)
+rotation = 0.11865707
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_h4k1k")
+
 [connection signal="body_entered" from="NPCs/NPC_Gladiador/InteractionArea" to="NPCs/NPC_Gladiador" method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="NPCs/NPC_Gladiador/InteractionArea" to="NPCs/NPC_Gladiador" method="_on_interaction_area_body_exited"]
 [connection signal="body_entered" from="NPCs/NPC_Cidadao/InteractionArea" to="NPCs/NPC_Cidadao" method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="NPCs/NPC_Cidadao/InteractionArea" to="NPCs/NPC_Cidadao" method="_on_interaction_area_body_exited"]
 [connection signal="body_entered" from="NPCs/NPC_Rei/InteractionArea" to="NPCs/NPC_Rei" method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="NPCs/NPC_Rei/InteractionArea" to="NPCs/NPC_Rei" method="_on_interaction_area_body_exited"]
+[connection signal="body_entered" from="TP_Coliseu" to="TP_Coliseu" method="_on_body_entered"]

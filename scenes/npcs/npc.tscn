@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://81gd8m8k1frc"]
 
+[ext_resource type="Script" uid="uid://civlihegadk0v" path="res://scenes/npcs/professora.gd" id="1_5ejjj"]
 [ext_resource type="Texture2D" uid="uid://c4fmvje56javp" path="res://icon.svg" id="1_ivh6b"]
-[ext_resource type="Script" uid="uid://yrccbdnk8fdc" path="res://script/npc.gd" id="1_m5fb5"]
 [ext_resource type="FontFile" uid="uid://m0u06dfqto8e" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="3_5ejjj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lohb"]
@@ -11,7 +11,7 @@ size = Vector2(133.33334, 133.33334)
 
 [node name="NPC" type="CharacterBody2D" unique_id=2072700294]
 scale = Vector2(0.3, 0.3)
-script = ExtResource("1_m5fb5")
+script = ExtResource("1_5ejjj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=914534525]
 scale = Vector2(0.3, 0.3)

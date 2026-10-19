@@ -1,10 +1,13 @@
 extends CanvasLayer
 
-@onready var panel = $Panel
 @onready var label = $Panel/DialogueLabel
 
+var falas: Array[String] = []
+var fala_atual: int = 0
+var dialogo_ativo: bool = false
+var tipo_dialogo: String = ""
 
-var falas_aula = [
+var falas_aula: Array[String] = [
 	"Bom dia, turma!",
 	"Hoje vamos começar uma viagem pela História.",
 	"Vamos conhecer diferentes épocas, lugares e acontecimentos importantes.",
@@ -14,103 +17,89 @@ var falas_aula = [
 	"O Coliseu!"
 ]
 
-
-var falas_professora = [
+var falas_professora: Array[String] = [
 	"Ah, você quer começar sua primeira missão?",
 	"Então vamos conhecer o Coliseu.",
-	"Ele ficava em Roma",
+	"Ele ficava em Roma.",
 	"Quero que você descubra como ele era utilizado",
 	"e qual era sua importância para os romanos.",
 	"Viaje até a Roma Antiga,",
 	"explore o Coliseu e descubra essas informações.",
-	"Quando terminar sua investigação",
+	"Quando terminar sua investigação,",
 	"volte para mim."
 ]
 
-
-var falas_gladiador = [
-	"Eu luto aqui diante de milhares de pessoas.",
-	"Os combates entre gladiadores são uma das atrações do Coliseu."
-]
-
-
-var falas_cidadao = [
-	"O Coliseu recebe muitos espetáculos.",
-	"É um lugar onde muitos romanos vêm se divertir."
-]
-
-
-var falas_imperador = [
-	"Eu venho ao Coliseu para assistir aos grandes espetáculos.",
-	"É impressionante ver tantos romanos reunidos neste lugar."
-]
-
-
-var falas = []
-var fala_atual = 0
-
-
-func _ready():
-	falas = falas_aula
+func _ready() -> void:
 	visible = true
-	get_parent().get_node("Player").can_move = false
+	iniciar_dialogo_aula()
+
+func iniciar_dialogo_aula() -> void:
+	falas = falas_aula.duplicate()
+	fala_atual = 0
+	tipo_dialogo = "aula"
+	dialogo_ativo = true
+	visible = true
+	bloquear_jogador()
 	mostrar_fala()
 
+func iniciar_dialogo() -> void:
+	if dialogo_ativo:
+		return
 
-func _input(event):
-	if event.is_action_pressed("ui_accept") and visible:
+	falas = falas_professora.duplicate()
+	fala_atual = 0
+	tipo_dialogo = "professora"
+	dialogo_ativo = true
+	visible = true
+	bloquear_jogador()
+	mostrar_fala()
+
+func bloquear_jogador() -> void:
+	var player = get_tree().current_scene.find_child("Player", true, false)
+
+	if player:
+		player.can_move = false
+
+func liberar_jogador() -> void:
+	var player = get_tree().current_scene.find_child("Player", true, false)
+
+	if player:
+		player.can_move = true
+
+func _input(event: InputEvent) -> void:
+	if not dialogo_ativo:
+		return
+
+	if event.is_action_pressed("ui_accept") and not event.is_echo():
+		get_viewport().set_input_as_handled()
 		proxima_fala()
 
+func mostrar_fala() -> void:
+	if fala_atual < falas.size():
+		label.text = falas[fala_atual]
 
-func mostrar_fala():
-	label.text = falas[fala_atual]
-
-
-func proxima_fala():
+func proxima_fala() -> void:
 	fala_atual += 1
 
 	if fala_atual >= falas.size():
+		var dialogo_que_terminou = tipo_dialogo
+
+		dialogo_ativo = false
 		visible = false
-		get_parent().get_node("Player").can_move = true
-		
-		if falas == falas_professora:
-			entregar_missao()
+		liberar_jogador()
+
+		if dialogo_que_terminou == "professora":
+			ativar_portal()
 	else:
 		mostrar_fala()
 
-
-func iniciar_dialogo():
-	falas = falas_professora
-	fala_atual = 0
-	visible = true
-	get_parent().get_node("Player").can_move = false
-	mostrar_fala()
-
-
-func iniciar_dialogo_npc(tipo):
-	if tipo == "gladiador":
-		falas = falas_gladiador
-	
-	elif tipo == "cidadao":
-		falas = falas_cidadao
-	
-	elif tipo == "imperador":
-		falas = falas_imperador
-
-	fala_atual = 0
-	visible = true
-	get_parent().get_node("Player").can_move = false
-	mostrar_fala()
-
-
-func entregar_missao():
-	MissionManager.adicionar_missao(
-		"Ecos do Coliseu",
-		"Viaje até a Roma Antiga e descubra como o Coliseu era utilizado e qual era sua importância para os romanos."
+func ativar_portal() -> void:
+	var portal = get_tree().current_scene.find_child(
+		"TimePortal", true, false
 	)
-	
-	var portal = get_parent().get_node("TimePortal")
-	portal.ativar_portal()
-	
-	var notification_ui = get_parent().get_node("NotificationUI")
-	notification_ui.mostrar_notificacao()
+
+	if portal:
+		portal.ativar_portal()
+		print("Portal encontrado e ativado!")
+	else:
+		print("ERRO: não encontrei o nó TimePortal!")

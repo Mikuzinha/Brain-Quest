@@ -1,19 +1,23 @@
 extends Area2D
 
-var portal_ativo = false
+var portal_ativo: bool = false
 
-
-func _ready():
+func _ready() -> void:
 	visible = false
 	monitoring = false
+	body_entered.connect(_on_body_entered)
 
-
-func ativar_portal():
+func ativar_portal() -> void:
 	portal_ativo = true
 	visible = true
 	monitoring = true
+	print("Portal ativado!")
 
+func _on_body_entered(body: Node2D) -> void:
+	if not portal_ativo:
+		return
 
-func _on_body_entered(body):
-	if portal_ativo and body.name == "Player":
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/map/coliseum.tscn")
+	if body.name == "Player":
+		get_tree().change_scene_to_file(
+			"res://scenes/map/coliseum.tscn"
+		)

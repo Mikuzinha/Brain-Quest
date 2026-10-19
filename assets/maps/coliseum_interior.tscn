@@ -1,0 +1,236 @@
+[gd_scene format=3 uid="uid://ccy6u3eih0ie1"]
+
+[ext_resource type="Texture2D" uid="uid://dsy2yc67ery3s" path="res://scenes/map/coliseu.png" id="1_u2csn"]
+[ext_resource type="PackedScene" uid="uid://dekutn00rkxyt" path="res://scenes/player/player.tscn" id="2_8wmgp"]
+[ext_resource type="Script" uid="uid://bp06hwfclme07" path="res://script/missions.gd" id="3_wx1ta"]
+[ext_resource type="FontFile" uid="uid://m0u06dfqto8e" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="4_8t2j4"]
+[ext_resource type="Script" uid="uid://d1xkfrx66yuv3" path="res://scenes/map/coliseum_dialogue.gd.gd" id="5_u6r4n"]
+[ext_resource type="Texture2D" uid="uid://c4fmvje56javp" path="res://icon.svg" id="6_8t2j4"]
+[ext_resource type="Script" uid="uid://bjsbsuwxaf5a1" path="res://assets/maps/npc_interacao.gd" id="7_u6r4n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2s3iw"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 20
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u6r4n"]
+radius = 48.507732
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6r4n"]
+size = Vector2(1.3813045, 1.7330039)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s3iw"]
+size = Vector2(1.3906492, 0.46012408)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i77ox"]
+size = Vector2(1.3906492, 0.46012408)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idh7a"]
+size = Vector2(1.3906492, 0.46012408)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0axv5"]
+size = Vector2(1.3906492, 0.46012408)
+
+[node name="coliseum_interior" type="Node2D" unique_id=1420732864]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=895461459]
+position = Vector2(576.00006, 323.99997)
+scale = Vector2(0.82168335, 0.5775401)
+texture = ExtResource("1_u2csn")
+
+[node name="Player" parent="." unique_id=711855411 instance=ExtResource("2_8wmgp")]
+position = Vector2(102, 271)
+scale = Vector2(0.5, 0.5)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=832200470]
+position = Vector2(-18.00003, -19)
+zoom = Vector2(4, 5)
+limit_left = 3
+limit_top = 0
+limit_right = 1150
+limit_bottom = 648
+
+[node name="MissionUI" type="CanvasLayer" parent="." unique_id=115590912]
+script = ExtResource("3_wx1ta")
+
+[node name="ColorRect" type="ColorRect" parent="MissionUI" unique_id=296726165]
+offset_left = 673.0
+offset_right = 1152.0
+offset_bottom = 275.0
+color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Label" parent="MissionUI" unique_id=1579132764]
+offset_left = 692.0
+offset_top = 8.0
+offset_right = 760.0
+offset_bottom = 31.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("4_8t2j4")
+text = "MISSÕES:"
+
+[node name="MissionList" type="Label" parent="MissionUI" unique_id=1745524614]
+offset_left = 689.0
+offset_top = 41.0
+offset_right = 986.3334
+offset_bottom = 189.66667
+scale = Vector2(1.4, 1.4)
+theme_override_fonts/font = ExtResource("4_8t2j4")
+text = "Nenhuma missão recebida."
+autowrap_mode = 3
+
+[node name="dialogue" type="CanvasLayer" parent="." unique_id=999251990 groups=["dialogue"]]
+script = ExtResource("5_u6r4n")
+
+[node name="Panel" type="Panel" parent="dialogue" unique_id=606600339]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -370.0
+offset_top = -120.0
+offset_right = 330.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2s3iw")
+
+[node name="DialogueLabel" type="Label" parent="dialogue/Panel" unique_id=1473469082]
+layout_mode = 0
+offset_left = 207.0
+offset_top = 4.999981
+offset_right = 477.55557
+offset_bottom = 65.55556
+scale = Vector2(1.8, 1.8)
+theme_override_fonts/font = ExtResource("4_8t2j4")
+text = "BOM DIA
+"
+autowrap_mode = 3
+
+[node name="NameLabel" type="Label" parent="dialogue/Panel" unique_id=141723669]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 1.0
+offset_right = 708.0
+offset_bottom = 106.0
+scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("4_8t2j4")
+text = "Gladiador:"
+
+[node name="ContinueLabel" type="Label" parent="dialogue/Panel" unique_id=534482539]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 93.0
+offset_right = 107.0
+offset_bottom = 118.0
+text = "[ENTER]"
+
+[node name="NPCs" type="Node2D" parent="." unique_id=411593919]
+
+[node name="NPC_Lutador" type="CharacterBody2D" parent="NPCs" unique_id=475055566]
+script = ExtResource("7_u6r4n")
+tipo_npc = "lutador"
+
+[node name="Sprite2D" type="Sprite2D" parent="NPCs/NPC_Lutador" unique_id=565114524]
+position = Vector2(729, 322.99994)
+scale = Vector2(0.29492193, 0.2871093)
+texture = ExtResource("6_8t2j4")
+
+[node name="InteractionArea" type="Area2D" parent="NPCs/NPC_Lutador" unique_id=1447381305]
+
+[node name="InteractionLabel" type="Label" parent="NPCs/NPC_Lutador/InteractionArea" unique_id=1656083029]
+offset_left = 698.0
+offset_top = 284.0
+offset_right = 759.0
+offset_bottom = 307.0
+text = "E - Falar"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NPCs/NPC_Lutador/InteractionArea" unique_id=1975664584]
+position = Vector2(728, 324)
+shape = SubResource("CircleShape2D_u6r4n")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NPCs/NPC_Lutador" unique_id=950968993]
+position = Vector2(-666.88477, -356.2421)
+scale = Vector2(0.29492193, 0.2871093)
+shape = SubResource("CircleShape2D_u6r4n")
+
+[node name="NPC_Guia" type="CharacterBody2D" parent="NPCs" unique_id=927893115]
+script = ExtResource("7_u6r4n")
+
+[node name="Sprite2D" type="Sprite2D" parent="NPCs/NPC_Guia" unique_id=528890728]
+position = Vector2(340, 216)
+scale = Vector2(0.29492193, 0.2871093)
+texture = ExtResource("6_8t2j4")
+
+[node name="InteractionArea" type="Area2D" parent="NPCs/NPC_Guia" unique_id=156705190]
+
+[node name="InteractionLabel" type="Label" parent="NPCs/NPC_Guia/InteractionArea" unique_id=383045611]
+offset_left = 311.0
+offset_top = 177.0
+offset_right = 372.0
+offset_bottom = 200.0
+text = "E - Falar"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NPCs/NPC_Guia/InteractionArea" unique_id=61247525]
+position = Vector2(340, 217)
+shape = SubResource("CircleShape2D_u6r4n")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NPCs/NPC_Guia" unique_id=242481930]
+position = Vector2(-666.88477, -356.2421)
+scale = Vector2(0.29492193, 0.2871093)
+shape = SubResource("CircleShape2D_u6r4n")
+
+[node name="Walls" type="Node2D" parent="." unique_id=1967370660]
+
+[node name="RightWall" type="StaticBody2D" parent="Walls" unique_id=1800698861]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall" unique_id=1510807746]
+position = Vector2(66.668884, 266.6254)
+rotation = -1.5707573
+scale = Vector2(40, 20)
+shape = SubResource("RectangleShape2D_u6r4n")
+
+[node name="RightWall2" type="StaticBody2D" parent="Walls" unique_id=1622186575]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall2" unique_id=169235121]
+position = Vector2(114.00001, 232.00002)
+rotation = -1.6103839
+scale = Vector2(40, 20)
+shape = SubResource("RectangleShape2D_2s3iw")
+
+[node name="RightWall3" type="StaticBody2D" parent="Walls" unique_id=388514304]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall3" unique_id=1925285892]
+position = Vector2(86.00001, 233)
+rotation = -1.0050185
+scale = Vector2(40, 20)
+shape = SubResource("RectangleShape2D_i77ox")
+
+[node name="RightWall4" type="StaticBody2D" parent="Walls" unique_id=941260776]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall4" unique_id=673944089]
+position = Vector2(93.99999, 224)
+rotation = -2.5257144
+scale = Vector2(40, 20)
+shape = SubResource("RectangleShape2D_idh7a")
+
+[node name="RightWall4" type="StaticBody2D" parent="Walls/RightWall4" unique_id=1068657524]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall4/RightWall4" unique_id=1913022168]
+position = Vector2(91, 248)
+rotation = -3.514709
+scale = Vector2(40, 20)
+shape = SubResource("RectangleShape2D_0axv5")
+
+[connection signal="body_entered" from="NPCs/NPC_Lutador/InteractionArea" to="NPCs/NPC_Lutador" method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="NPCs/NPC_Lutador/InteractionArea" to="NPCs/NPC_Lutador" method="_on_interaction_area_body_exited"]
+[connection signal="body_entered" from="NPCs/NPC_Guia/InteractionArea" to="NPCs/NPC_Guia" method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="NPCs/NPC_Guia/InteractionArea" to="NPCs/NPC_Guia" method="_on_interaction_area_body_exited"]

@@ -47,3 +47,7 @@ func _physics_process(_delta: float) -> void:
 		animated_sprite.frame = 0
 
 	move_and_slide()
+
+
+func _on_tp_coliseu_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
