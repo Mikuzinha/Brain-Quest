@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://m0u06dfqto8e" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="6_evsgb"]
 [ext_resource type="Script" uid="uid://bp06hwfclme07" path="res://script/missions.gd" id="7_nir4y"]
 [ext_resource type="Script" uid="uid://bnw0o17hg3ctc" path="res://script/notification_ui.gd" id="8_jya7e"]
+[ext_resource type="Script" uid="uid://dbg81c202gb7p" path="res://scenes/map/time_portal_sala.gd" id="9_6eae0"]
 [ext_resource type="PackedScene" uid="uid://dmufck6m2112q" path="res://scenes/map/time_portal.tscn" id="9_d6heu"]
 [ext_resource type="AudioStream" uid="uid://b5vhhxyko85l2" path="res://audio/music for bk.mp3" id="9_ih6y4"]
 
@@ -321,8 +322,12 @@ Aperte J para ver suas missões"
 visible = false
 position = Vector2(617.00006, 386)
 scale = Vector2(0.1, 0.1)
+script = ExtResource("9_6eae0")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1642650847]
 stream = ExtResource("9_ih6y4")
-volume_db = 24.0
+volume_db = 4.0
 autoplay = true
+
+[node name="SpawnVoltaSala" type="Marker2D" parent="." unique_id=1131861621]
+position = Vector2(606, 387)

@@ -8,6 +8,7 @@
 size = Vector2(133.33334, 133.33334)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4lohb"]
+radius = 20.0
 
 [node name="NPC" type="CharacterBody2D" unique_id=2072700294]
 scale = Vector2(0.3, 0.3)

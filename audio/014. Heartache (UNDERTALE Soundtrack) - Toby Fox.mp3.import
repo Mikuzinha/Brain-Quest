@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dgb8fmc3u2b4i"
+path="res://.godot/imported/014. Heartache (UNDERTALE Soundtrack) - Toby Fox.mp3-687c9781865f396bb2079a69fda5477c.mp3str"
+
+[deps]
+
+source_file="res://audio/014. Heartache (UNDERTALE Soundtrack) - Toby Fox.mp3"
+dest_files=["res://.godot/imported/014. Heartache (UNDERTALE Soundtrack) - Toby Fox.mp3-687c9781865f396bb2079a69fda5477c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

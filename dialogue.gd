@@ -1,3 +1,4 @@
+
 extends CanvasLayer
 
 @onready var label = $Panel/DialogueLabel
@@ -27,11 +28,45 @@ var falas_professora: Array[String] = [
 	"explore o Coliseu e descubra essas informações.",
 	"Quando terminar sua investigação,",
 	"volte para mim."
+] 
+	
+var falas_pos_roma: Array[String] = [
+	"Que bom que você voltou de Roma!",
+	"Você descobriu coisas interessantes sobre o Coliseu?",
+	"Agora vamos testar o que você aprendeu!",
+	"Você está pronto para o nosso quiz?",
+	"Então prepare-se para o desafio!",
+	"Vamos começar!"
 ]
 
 func _ready() -> void:
+
+	if GameState.voltou_de_roma:
+		GameState.voltou_de_roma = false
+		iniciar_dialogo_pos_roma()
+		return
+
+	if GameState.aula_ja_exibida:
+		visible = false
+		dialogo_ativo = false
+		liberar_jogador()
+		return
+
+	GameState.aula_ja_exibida = true
+	iniciar_dialogo_aula()
+
 	visible = true
 	iniciar_dialogo_aula()
+	
+func iniciar_dialogo_pos_roma() -> void:
+	falas = falas_pos_roma.duplicate()
+	fala_atual = 0
+	tipo_dialogo = "pos_roma"
+	dialogo_ativo = true
+	visible = true
+	bloquear_jogador()
+	mostrar_fala()
+
 
 func iniciar_dialogo_aula() -> void:
 	falas = falas_aula.duplicate()
@@ -41,6 +76,7 @@ func iniciar_dialogo_aula() -> void:
 	visible = true
 	bloquear_jogador()
 	mostrar_fala()
+
 
 func iniciar_dialogo() -> void:
 	if dialogo_ativo:
@@ -54,17 +90,24 @@ func iniciar_dialogo() -> void:
 	bloquear_jogador()
 	mostrar_fala()
 
+
 func bloquear_jogador() -> void:
-	var player = get_tree().current_scene.find_child("Player", true, false)
+	var player = get_tree().current_scene.find_child(
+		"Player", true, false
+	)
 
 	if player:
 		player.can_move = false
 
+
 func liberar_jogador() -> void:
-	var player = get_tree().current_scene.find_child("Player", true, false)
+	var player = get_tree().current_scene.find_child(
+		"Player", true, false
+	)
 
 	if player:
 		player.can_move = true
+
 
 func _input(event: InputEvent) -> void:
 	if not dialogo_ativo:
@@ -74,9 +117,11 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		proxima_fala()
 
+
 func mostrar_fala() -> void:
 	if fala_atual < falas.size():
 		label.text = falas[fala_atual]
+
 
 func proxima_fala() -> void:
 	fala_atual += 1
@@ -90,8 +135,10 @@ func proxima_fala() -> void:
 
 		if dialogo_que_terminou == "professora":
 			ativar_portal()
-	else:
-		mostrar_fala()
+
+		elif dialogo_que_terminou == "pos_roma":
+			get_tree().change_scene_to_file("res://battle.tscn")
+
 
 func ativar_portal() -> void:
 	var portal = get_tree().current_scene.find_child(

@@ -4,18 +4,129 @@
 [ext_resource type="Script" uid="uid://bp06hwfclme07" path="res://script/missions.gd" id="1_ajssx"]
 [ext_resource type="Texture2D" uid="uid://d5ogu7outdsa" path="res://scenes/map/cidade.png" id="1_x3ca0"]
 [ext_resource type="Script" uid="uid://b0tw0xcky6nsv" path="res://script/npc_gladiador.gd" id="2_gd0d0"]
-[ext_resource type="Texture2D" uid="uid://c4fmvje56javp" path="res://icon.svg" id="2_ss1mo"]
 [ext_resource type="FontFile" uid="uid://m0u06dfqto8e" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="3_ss1mo"]
 [ext_resource type="Script" uid="uid://wuwvcelc3gw6" path="res://scenes/map/npc_cidadao.gd" id="5_or2sg"]
+[ext_resource type="Texture2D" uid="uid://coikqvtesjjme" path="res://assets/characters/Sprite Sheet de Personagens Romanos.png" id="6_1b6f6"]
 [ext_resource type="Script" uid="uid://bjj322oyieanr" path="res://scenes/map/npc_rei.gd" id="6_evk3x"]
 [ext_resource type="Script" uid="uid://d1xkfrx66yuv3" path="res://scenes/map/coliseum_dialogue.gd.gd" id="6_wwxms"]
+[ext_resource type="Texture2D" uid="uid://dps2hcgk7y5ra" path="res://assets/characters/sprite.png" id="8_lp1bq"]
 [ext_resource type="AudioStream" uid="uid://d4lhjs7tfyulb" path="res://audio/music for bk atena.mp3" id="10_kg5ah"]
 [ext_resource type="Script" uid="uid://cti3ik2yheks3" path="res://scenes/map/tp_coliseu.gd" id="11_6fs3k"]
+[ext_resource type="PackedScene" uid="uid://dmufck6m2112q" path="res://scenes/map/time_portal.tscn" id="12_abqtk"]
+[ext_resource type="Script" uid="uid://cixqrfdbrt4yb" path="res://scenes/map/time_portal_volta.gd" id="13_hm13j"]
 
 [sub_resource type="TileSet" id="TileSet_or2sg"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcchy"]
+atlas = ExtResource("6_1b6f6")
+region = Rect2(275, 682, 275, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msysn"]
+atlas = ExtResource("6_1b6f6")
+region = Rect2(550, 682, 275, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d6br"]
+atlas = ExtResource("6_1b6f6")
+region = Rect2(825, 682, 275, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dxj8"]
+atlas = ExtResource("6_1b6f6")
+region = Rect2(1100, 682, 275, 341)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_28ys2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcchy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msysn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d6br")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dxj8")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_4lohb"]
 radius = 48.507732
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp1bq"]
+atlas = ExtResource("6_1b6f6")
+region = Rect2(275, 2, 275, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh47g"]
+atlas = ExtResource("6_1b6f6")
+region = Rect2(550, 2, 275, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x0nj"]
+atlas = ExtResource("6_1b6f6")
+region = Rect2(825, 2, 275, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmp43"]
+atlas = ExtResource("6_1b6f6")
+region = Rect2(1100, 2, 275, 341)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lohb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp1bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh47g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x0nj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmp43")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lmuk"]
+atlas = ExtResource("8_lp1bq")
+region = Rect2(175, 343, 275, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b70p5"]
+atlas = ExtResource("8_lp1bq")
+region = Rect2(450, 343, 275, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twkfj"]
+atlas = ExtResource("8_lp1bq")
+region = Rect2(725, 343, 275, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6yo6"]
+atlas = ExtResource("8_lp1bq")
+region = Rect2(1000, 343, 275, 341)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h4k1k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lmuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b70p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twkfj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6yo6")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajssx"]
 size = Vector2(17.84999, 1.263881)
@@ -206,6 +317,7 @@ corner_detail = 20
 size = Vector2(55.229034, 68.999985)
 
 [node name="Coliseum" type="Node2D" unique_id=1260014534]
+position = Vector2(576, 323)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=120864274]
 position = Vector2(0.49992555, 0.500016)
@@ -226,10 +338,13 @@ scale = Vector2(0.9, 0.9)
 [node name="NPC_Gladiador" type="CharacterBody2D" parent="NPCs" unique_id=556906260]
 script = ExtResource("2_gd0d0")
 
-[node name="Sprite2D" type="Sprite2D" parent="NPCs/NPC_Gladiador" unique_id=345271143]
-position = Vector2(218, -118.000015)
-scale = Vector2(0.29492193, 0.2871093)
-texture = ExtResource("2_ss1mo")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPCs/NPC_Gladiador" unique_id=1932693118]
+position = Vector2(222, -121)
+scale = Vector2(0.18113633, 0.1935484)
+sprite_frames = SubResource("SpriteFrames_28ys2")
+animation = &"idle"
+frame_progress = 0.15768702
+speed_scale = 0.7
 
 [node name="InteractionArea" type="Area2D" parent="NPCs/NPC_Gladiador" unique_id=428596252]
 
@@ -239,6 +354,7 @@ offset_top = -157.0
 offset_right = 248.0
 offset_bottom = -134.0
 text = "E - Falar"
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="NPCs/NPC_Gladiador/InteractionArea" unique_id=1326207802]
 position = Vector2(217, -117)
@@ -252,10 +368,12 @@ shape = SubResource("CircleShape2D_4lohb")
 [node name="NPC_Cidadao" type="CharacterBody2D" parent="NPCs" unique_id=833555332]
 script = ExtResource("5_or2sg")
 
-[node name="Sprite2D" type="Sprite2D" parent="NPCs/NPC_Cidadao" unique_id=934095045]
-position = Vector2(-547, 46.000015)
-scale = Vector2(0.29492193, 0.2871093)
-texture = ExtResource("2_ss1mo")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPCs/NPC_Cidadao" unique_id=1406033806]
+position = Vector2(-547, 36.000046)
+scale = Vector2(0.17, 0.17613642)
+sprite_frames = SubResource("SpriteFrames_4lohb")
+animation = &"idle"
+speed_scale = 0.7
 
 [node name="InteractionArea" type="Area2D" parent="NPCs/NPC_Cidadao" unique_id=35612428]
 
@@ -265,6 +383,7 @@ offset_top = 7.0
 offset_right = -515.0
 offset_bottom = 30.0
 text = "E - Falar"
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="NPCs/NPC_Cidadao/InteractionArea" unique_id=1176522724]
 position = Vector2(-547, 47)
@@ -278,10 +397,12 @@ shape = SubResource("CircleShape2D_4lohb")
 [node name="NPC_Rei" type="CharacterBody2D" parent="NPCs" unique_id=762250120]
 script = ExtResource("6_evk3x")
 
-[node name="Sprite2D" type="Sprite2D" parent="NPCs/NPC_Rei" unique_id=1202027775]
-position = Vector2(-64, 105)
-scale = Vector2(0.29492193, 0.2871093)
-texture = ExtResource("2_ss1mo")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPCs/NPC_Rei" unique_id=137308988]
+position = Vector2(-66, 99.000015)
+scale = Vector2(0.16886362, 0.16807191)
+sprite_frames = SubResource("SpriteFrames_h4k1k")
+animation = &"idle"
+speed_scale = 0.7
 
 [node name="InteractionArea" type="Area2D" parent="NPCs/NPC_Rei" unique_id=1323348846]
 
@@ -291,6 +412,7 @@ offset_top = 66.0
 offset_right = -32.0
 offset_bottom = 89.0
 text = "E - Falar"
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="NPCs/NPC_Rei/InteractionArea" unique_id=749926485]
 position = Vector2(-64, 107)
@@ -300,8 +422,6 @@ shape = SubResource("CircleShape2D_4lohb")
 position = Vector2(-666.88477, -356.2421)
 scale = Vector2(0.29492193, 0.2871093)
 shape = SubResource("CircleShape2D_4lohb")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1012329276]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=351653943]
 
@@ -322,6 +442,7 @@ offset_bottom = 31.0
 scale = Vector2(1.5, 1.5)
 theme_override_fonts/font = ExtResource("3_ss1mo")
 text = "MISSÕES:"
+metadata/_edit_use_anchors_ = true
 
 [node name="MissionList" type="Label" parent="MissionUI" unique_id=1468404660]
 offset_left = 689.0
@@ -766,6 +887,7 @@ offset_right = 330.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_x3ca0")
+metadata/_edit_use_anchors_ = true
 
 [node name="DialogueLabel" type="Label" parent="dialogue/Panel" unique_id=762269420]
 layout_mode = 0
@@ -778,6 +900,7 @@ theme_override_fonts/font = ExtResource("3_ss1mo")
 text = "BOM DIA
 "
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="NameLabel" type="Label" parent="dialogue/Panel" unique_id=952561607]
 layout_mode = 0
@@ -796,9 +919,11 @@ offset_top = 93.0
 offset_right = 107.0
 offset_bottom = 118.0
 text = "[ENTER]"
+metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1940404139]
 stream = ExtResource("10_kg5ah")
+volume_db = -47.224
 autoplay = true
 
 [node name="TP_Coliseu" type="Area2D" parent="." unique_id=1409139266]
@@ -811,6 +936,17 @@ position = Vector2(-7.6293945e-06, -3.8146973e-06)
 rotation = 0.11865707
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_h4k1k")
+
+[node name="SpawnSaidaColiseu" type="Marker2D" parent="." unique_id=951828298]
+position = Vector2(303, -69)
+scale = Vector2(1, 1.0000001)
+
+[node name="TimePortal" parent="." unique_id=42273545 instance=ExtResource("12_abqtk")]
+visible = false
+position = Vector2(33.99997, 304)
+rotation = 1.5826218
+scale = Vector2(0.1, 0.1)
+script = ExtResource("13_hm13j")
 
 [connection signal="body_entered" from="NPCs/NPC_Gladiador/InteractionArea" to="NPCs/NPC_Gladiador" method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="NPCs/NPC_Gladiador/InteractionArea" to="NPCs/NPC_Gladiador" method="_on_interaction_area_body_exited"]

@@ -1,6 +1,216 @@
 [gd_scene format=3 uid="uid://dq36dvselmabw"]
 
 [ext_resource type="Script" uid="uid://dpa514oey5ine" path="res://battle.gd" id="1_ip7xm"]
+[ext_resource type="Texture2D" uid="uid://dxpwpvs05dcu3" path="res://assets/characters/batlaha.png" id="2_7sfm4"]
+[ext_resource type="AudioStream" uid="uid://dgb8fmc3u2b4i" path="res://audio/014. Heartache (UNDERTALE Soundtrack) - Toby Fox.mp3" id="2_oxp8w"]
+[ext_resource type="Script" uid="uid://cejvhdd5kkxpc" path="res://inimigo.gd" id="3_0npn6"]
+[ext_resource type="Texture2D" uid="uid://c3juchpo0b5g" path="res://assets/characters/Folha de sprites de batalha em pixel art (1).png" id="3_dw4jg"]
+[ext_resource type="Texture2D" uid="uid://hmmr0bjm64n5" path="res://assets/characters/Sprite Sheet_ Garota e Gladiador em Batalha.png" id="3_i431l"]
+[ext_resource type="Script" uid="uid://bhshx3ywmhu0g" path="res://protagonista.gd" id="5_0npn6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pihy1"]
+atlas = ExtResource("3_dw4jg")
+region = Rect2(0, 714, 118, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slotg"]
+atlas = ExtResource("3_dw4jg")
+region = Rect2(118, 714, 118, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix8ov"]
+atlas = ExtResource("3_dw4jg")
+region = Rect2(236, 714, 118, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx4lf"]
+atlas = ExtResource("3_dw4jg")
+region = Rect2(354, 714, 118, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22sa7"]
+atlas = ExtResource("3_dw4jg")
+region = Rect2(472, 714, 118, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aacmo"]
+atlas = ExtResource("3_dw4jg")
+region = Rect2(590, 714, 118, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rggsl"]
+atlas = ExtResource("3_dw4jg")
+region = Rect2(708, 714, 118, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i431l"]
+atlas = ExtResource("3_i431l")
+region = Rect2(0, 530, 100, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol6im"]
+atlas = ExtResource("3_i431l")
+region = Rect2(100, 530, 100, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1i6x"]
+atlas = ExtResource("3_i431l")
+region = Rect2(200, 530, 100, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl0w2"]
+atlas = ExtResource("3_i431l")
+region = Rect2(300, 530, 100, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elvfr"]
+atlas = ExtResource("3_i431l")
+region = Rect2(400, 530, 100, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s0ev"]
+atlas = ExtResource("3_i431l")
+region = Rect2(500, 530, 100, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ol6im"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pihy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slotg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix8ov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx4lf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22sa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aacmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rggsl")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i431l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol6im")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1i6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl0w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elvfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4s0ev")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fljlq"]
+atlas = ExtResource("3_dw4jg")
+region = Rect2(0, 146, 118, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5g7e"]
+atlas = ExtResource("3_dw4jg")
+region = Rect2(118, 146, 118, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j128n"]
+atlas = ExtResource("3_dw4jg")
+region = Rect2(236, 146, 118, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt5qs"]
+atlas = ExtResource("3_dw4jg")
+region = Rect2(354, 146, 118, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7t3w"]
+atlas = ExtResource("3_dw4jg")
+region = Rect2(472, 146, 118, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in21c"]
+atlas = ExtResource("3_dw4jg")
+region = Rect2(590, 146, 118, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwl2g"]
+atlas = ExtResource("3_dw4jg")
+region = Rect2(708, 146, 118, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t8i5"]
+atlas = ExtResource("3_i431l")
+region = Rect2(0, 0, 102, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw4jg"]
+atlas = ExtResource("3_i431l")
+region = Rect2(102, 0, 102, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0npn6"]
+atlas = ExtResource("3_i431l")
+region = Rect2(204, 0, 102, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhv3b"]
+atlas = ExtResource("3_i431l")
+region = Rect2(306, 0, 102, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcjiy"]
+atlas = ExtResource("3_i431l")
+region = Rect2(408, 0, 102, 146)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lohb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fljlq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5g7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j128n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nt5qs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7t3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in21c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwl2g")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t8i5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw4jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0npn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhv3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcjiy")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i431l"]
+radius = 51.009804
 
 [node name="Battle" type="Control" unique_id=1303775927]
 layout_mode = 3
@@ -9,16 +219,28 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_ip7xm")
 
-[node name="Background" type="ColorRect" parent="." unique_id=76399453]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1112.0
-offset_bottom = 608.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.7453117, 0.5464745, 0.7510334, 1)
+[node name="Background2" type="Sprite2D" parent="." unique_id=1603044469]
+position = Vector2(576.00006, 324.00003)
+scale = Vector2(0.6889953, 0.68862915)
+texture = ExtResource("2_7sfm4")
+
+[node name="Inimigo" type="CharacterBody2D" parent="." unique_id=176343588]
+script = ExtResource("3_0npn6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Inimigo" unique_id=1697515498]
+position = Vector2(1011, 171)
+scale = Vector2(-3.6768203, 3.6007502)
+sprite_frames = SubResource("SpriteFrames_ol6im")
+animation = &"idle"
+
+[node name="Protagonista" type="CharacterBody2D" parent="." unique_id=37875550]
+script = ExtResource("5_0npn6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Protagonista" unique_id=912755151]
+position = Vector2(205.99998, 386)
+scale = Vector2(3.9214795, 3.7340152)
+sprite_frames = SubResource("SpriteFrames_4lohb")
+animation = &"attack"
 
 [node name="Player" type="TextureRect" parent="." unique_id=1954722244]
 layout_mode = 1
@@ -405,6 +627,15 @@ offset_bottom = 448.0
 theme_override_font_sizes/font_size = 30
 text = "CONTINUAR"
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="VictoryScreen/ContinueButton" unique_id=1438117901]
+position = Vector2(728, 324)
+shape = SubResource("CircleShape2D_i431l")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1628730528]
+stream = ExtResource("2_oxp8w")
+volume_db = 4.0
+autoplay = true
+
 [connection signal="focus_entered" from="ActionMenu/GridContainer/AttackButton" to="." method="_on_attack_button_focus_entered"]
 [connection signal="pressed" from="ActionMenu/GridContainer/AttackButton" to="." method="_on_attack_button_pressed"]
 [connection signal="focus_entered" from="ActionMenu/GridContainer/DefendButton" to="." method="_on_defend_button_focus_entered"]
@@ -418,3 +649,4 @@ text = "CONTINUAR"
 [connection signal="pressed" from="SkillMenu/VBoxContainer/InvincibleDefenseButton" to="." method="_on_invincible_defense_button_pressed"]
 [connection signal="pressed" from="DefeatScreen/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="VictoryScreen/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="VictoryScreen/ContinueButton" to="." method="_on_victory_continue_button_pressed"]

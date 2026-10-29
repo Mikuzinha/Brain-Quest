@@ -41,6 +41,9 @@ var invincible_defense = false
 @onready var defeat_title = $DefeatScreen/DefeatTitle
 @onready var defeat_description = $DefeatScreen/DefeatDescription
 
+@onready var animacao_player: AnimatedSprite2D = $Protagonista/AnimatedSprite2D
+@onready var animacao_inimigo: AnimatedSprite2D = $Inimigo/AnimatedSprite2D
+
 func _ready() -> void:
 	update_ui()
 	set_stamina_bar_color()
@@ -101,6 +104,7 @@ func _on_attack_button_pressed() -> void:
 		return
 
 	player_turn = false
+	await animar_ataque_player()
 
 	# Causa 20 de dano
 	enemy_hp = max(enemy_hp - 20, 0)
@@ -157,6 +161,8 @@ func _on_defend_button_pressed() -> void:
 
 
 func enemy_attack() -> int:
+
+	await animar_ataque_inimigo()
 
 	var damage = 20
 
@@ -380,7 +386,7 @@ func _input(event: InputEvent) -> void:
 
 		if message_step == 0:
 
-			var damage = enemy_attack()
+			var damage = await enemy_attack()
 
 			show_guide(
 				"O INIMIGO ATACOU!",
@@ -491,9 +497,30 @@ func show_victory() -> void:
 	victory_button.grab_focus()
 
 func _on_victory_continue_button_pressed() -> void:
-	# Por enquanto não faz nada
-	pass
+	print("BOTÃO CONTINUAR CLICADO!")
+
+	GameState.batalha_vencida = true
+	GameState.lutador_derrotado = true
+
+	var resultado = get_tree().change_scene_to_file(
+        "res://assets/maps/coliseum_interior.tscn"
+	)
+
+	print("RESULTADO DA TROCA DE CENA: ", resultado)
+
 
 func _on_defeat_continue_button_pressed() -> void:
-	# Por enquanto não faz nada
-	pass
+	get_tree().change_scene_to_file(
+		"res://scenes/map/coliseum.tscn"
+	)
+	
+func animar_ataque_player() -> void:
+	animacao_player.play("attack")
+	await animacao_player.animation_finished
+	animacao_player.play("idle")
+
+
+func animar_ataque_inimigo() -> void:
+	animacao_inimigo.play("attack")
+	await animacao_inimigo.animation_finished
+	animacao_inimigo.play("idle")
