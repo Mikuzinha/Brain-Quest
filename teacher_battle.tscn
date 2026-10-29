@@ -1,0 +1,427 @@
+[gd_scene format=3 uid="uid://dns2ngtv3aodb"]
+
+[ext_resource type="Script" uid="uid://bwbpklvw5iw8v" path="res://script/teacher_battle.gd" id="1_wer1c"]
+[ext_resource type="Script" uid="uid://b2qybq5pqyu7s" path="res://enemy.gd" id="2_r4ls3"]
+[ext_resource type="Script" uid="uid://c2g3mgu6jv3uk" path="res://enemy_info.gd" id="3_vh6ys"]
+[ext_resource type="Script" uid="uid://cldr237hp8tqj" path="res://skill_menu.gd" id="4_2wx53"]
+[ext_resource type="Script" uid="uid://daiw56k70o6j4" path="res://guide_description.gd" id="4_dyuv8"]
+[ext_resource type="Script" uid="uid://dqh2nfb3oj285" path="res://defeat_screen.gd" id="5_dyuv8"]
+[ext_resource type="Script" uid="uid://dt4tnex4sdq7f" path="res://victory_screen.gd" id="6_ijcyw"]
+
+[node name="Battle" type="Control" unique_id=1303775927]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_wer1c")
+
+[node name="Background" type="ColorRect" parent="." unique_id=76399453]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1112.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7453117, 0.5464745, 0.7510334, 1)
+
+[node name="Player" type="TextureRect" parent="." unique_id=1954722244]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.8500001
+anchor_top = -1.45
+anchor_right = 2.775
+anchor_bottom = 3.2660003
+offset_left = 174.0
+offset_top = 236.0
+offset_right = 174.0
+offset_bottom = 116.359985
+
+[node name="Enemy" type="TextureRect" parent="." unique_id=1714116754]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.1750002
+anchor_top = -0.85
+anchor_right = 2.825
+anchor_bottom = -0.5
+script = ExtResource("2_r4ls3")
+
+[node name="EnemyInfo" type="Panel" parent="." unique_id=1615081779]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 19.400002
+anchor_top = 0.17500001
+anchor_right = 28.425001
+anchor_bottom = 2.7
+offset_left = -6.1035156e-05
+script = ExtResource("3_vh6ys")
+
+[node name="EnemyName" type="Label" parent="EnemyInfo" unique_id=1641713036]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.039
+anchor_top = 0.030000001
+anchor_right = 0.446
+anchor_bottom = 0.554
+offset_left = -0.07900047
+offset_top = -0.03000021
+offset_right = -0.005996704
+offset_bottom = 0.04599762
+theme_override_font_sizes/font_size = 34
+text = "Professora"
+
+[node name="EnemyHP" type="Label" parent="EnemyInfo" unique_id=68664393]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.564
+anchor_right = 0.45700002
+anchor_bottom = 0.94100004
+offset_left = -0.1079855
+offset_top = 0.035999298
+offset_right = -0.13696289
+offset_bottom = -0.041007996
+theme_override_font_sizes/font_size = 25
+text = "HP: 200/200"
+
+[node name="EnemyHPBar" type="ProgressBar" parent="EnemyInfo" unique_id=1109519560]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48200002
+anchor_top = 0.67300004
+anchor_right = 0.97200006
+anchor_bottom = 0.89300007
+offset_left = -0.0020141602
+offset_top = 0.026992798
+offset_right = 0.10797119
+offset_bottom = 0.01399231
+value = 100.0
+show_percentage = false
+
+[node name="PlayerInfo" type="Panel" parent="." unique_id=1703384532]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 9.625
+anchor_right = 10.05
+anchor_bottom = 11.925
+offset_left = 5.0
+
+[node name="PlayerName" type="Label" parent="PlayerInfo" unique_id=35034249]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.48900002
+anchor_right = 0.43400002
+anchor_bottom = 0.09200001
+offset_top = -0.011997223
+offset_right = 0.10998535
+offset_bottom = -0.4640007
+theme_override_font_sizes/font_size = 35
+text = "Player"
+
+[node name="PlayerHP" type="Label" parent="PlayerInfo" unique_id=1657828892]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.25300002
+anchor_right = 0.439
+anchor_bottom = 0.59800005
+offset_left = 3.0
+offset_top = -14.951004
+offset_right = 2.9580002
+offset_bottom = -10.066004
+theme_override_font_sizes/font_size = 24
+text = "HP: 100/100"
+
+[node name="StaminaText" type="Label" parent="PlayerInfo" unique_id=123035338]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.011000001
+anchor_top = 0.609
+anchor_right = 0.39900002
+anchor_bottom = 1.011
+offset_left = -1.0580003
+offset_top = -10.713013
+offset_right = -0.9220047
+offset_bottom = 1.3729858
+theme_override_font_sizes/font_size = 28
+text = "ST: 20/20"
+
+[node name="StaminaBar" type="ProgressBar" parent="PlayerInfo" unique_id=274691179]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40300003
+anchor_top = 0.5
+anchor_right = 0.98100007
+anchor_bottom = 0.837
+offset_left = 0.008987427
+offset_top = 2.9999962
+offset_right = -1.007019
+offset_bottom = 1.9960022
+max_value = 20.0
+value = 20.0
+show_percentage = false
+
+[node name="PlayerHPBar" type="ProgressBar" parent="PlayerInfo" unique_id=1255472980]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.453
+anchor_top = 0.053000003
+anchor_right = 0.98600006
+anchor_bottom = 0.5
+offset_left = -21.841003
+offset_top = 5.123989
+offset_right = -2.4420166
+offset_bottom = -6.0000114
+value = 100.0
+show_percentage = false
+
+[node name="ControlsGuide" type="Panel" parent="." unique_id=604309962]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 19.125
+anchor_top = 6.2000003
+anchor_right = 32.525
+anchor_bottom = 10.675
+offset_left = 135.0
+offset_top = 169.99998
+offset_right = -159.0
+offset_bottom = 45.0
+
+[node name="ControlsText" type="Label" parent="ControlsGuide" unique_id=292420058]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017
+anchor_right = 1.0
+anchor_bottom = 0.94400007
+offset_left = -0.11400032
+offset_top = 4.0
+offset_right = -3.0
+offset_bottom = 0.02399826
+theme_override_font_sizes/font_size = 15
+text = "            ← ↑ ↓ → =  Mover    
+ENTER = Confirmar   ESC = Voltar"
+
+[node name="ActionMenu" type="Panel" parent="." unique_id=1203566303]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = -0.05
+anchor_right = 1.7750001
+anchor_bottom = 0.85
+offset_left = 699.0
+offset_top = 482.0
+offset_right = 1072.0
+offset_bottom = 611.0
+
+[node name="GridContainer" type="GridContainer" parent="ActionMenu" unique_id=823522506]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.028
+anchor_right = 0.9850001
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 7.3799996
+offset_right = -0.4000244
+offset_bottom = -12.0
+theme_override_constants/h_separation = 26
+theme_override_constants/v_separation = 26
+columns = 2
+
+[node name="AttackButton" type="Button" parent="ActionMenu/GridContainer" unique_id=563900687]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "ATACAR"
+
+[node name="DefendButton" type="Button" parent="ActionMenu/GridContainer" unique_id=1348025133]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "DEFENDER"
+
+[node name="SkillButton" type="Button" parent="ActionMenu/GridContainer" unique_id=349972890]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "HABILIDADE"
+
+[node name="ItemButton" type="Button" parent="ActionMenu/GridContainer" unique_id=1402294509]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "ITEM"
+
+[node name="ActionGuide" type="Panel" parent="." unique_id=628569069]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.45
+anchor_top = 0.125
+anchor_right = 1.125
+anchor_bottom = 1.325
+offset_left = 102.0
+offset_top = 476.0
+offset_right = 652.0
+offset_bottom = 591.0
+
+[node name="GuideTitle" type="Label" parent="ActionGuide" unique_id=1163433732]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.915
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -5.0
+offset_right = -0.09503174
+offset_bottom = -9.5
+theme_override_font_sizes/font_size = 45
+text = "ATACAR"
+
+[node name="GuideDescription" type="Label" parent="ActionGuide" unique_id=541876446]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.423
+anchor_right = 0.98800004
+anchor_bottom = 1.0
+offset_left = -4.7020006
+offset_top = 0.05102539
+offset_right = -4.684021
+offset_bottom = -3.9999695
+theme_override_font_sizes/font_size = 25
+text = "Causa 20 de dano. 
+Não consome stamina"
+autowrap_mode = 2
+script = ExtResource("4_dyuv8")
+
+[node name="SkillMenu" type="Panel" parent="." unique_id=637736795]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.25
+anchor_top = -1.2750001
+anchor_right = 6.425
+anchor_bottom = 5.9500003
+offset_left = 871.0
+offset_top = 531.0
+offset_right = 891.0
+offset_bottom = 413.0
+script = ExtResource("4_2wx53")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SkillMenu" unique_id=1291826904]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.047000002
+anchor_top = 0.07
+anchor_right = 0.98
+anchor_bottom = 0.91800004
+offset_left = -0.009000778
+offset_top = 0.029999733
+offset_right = -0.05999756
+offset_bottom = 0.021987915
+theme_override_constants/separation = 20
+
+[node name="PowerfulAttackButton" type="Button" parent="SkillMenu/VBoxContainer" unique_id=1073313671]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "GOLPE PODEROSO"
+
+[node name="InvincibleDefenseButton" type="Button" parent="SkillMenu/VBoxContainer" unique_id=198422548]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "DEFESA IMPENETRÁVEL"
+
+[node name="DefeatScreen" type="Panel" parent="." unique_id=1481607946]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.875002
+anchor_bottom = 16.400002
+offset_left = -1.0
+offset_top = -1.0
+offset_right = -1.0001221
+offset_bottom = -2.000061
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_dyuv8")
+
+[node name="DefeatTitle" type="Label" parent="DefeatScreen" unique_id=239380635]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.294
+anchor_top = 0.317
+anchor_right = 0.68700004
+anchor_bottom = 0.541
+offset_left = 23.429993
+offset_top = 19.048004
+offset_right = 23.514954
+offset_bottom = 19.104004
+theme_override_font_sizes/font_size = 90
+text = "DERROTA!"
+
+[node name="DefeatDescription" type="Label" parent="DefeatScreen" unique_id=531762857]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 339.0
+offset_right = 776.0
+offset_bottom = 409.0
+theme_override_font_sizes/font_size = 40
+text = "Você foi derrotado!"
+
+[node name="ContinueButton" type="Button" parent="DefeatScreen" unique_id=1640095780]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 394.0
+offset_right = 649.0
+offset_bottom = 448.0
+theme_override_font_sizes/font_size = 30
+text = "CONTINUAR"
+
+[node name="VictoryScreen" type="Panel" parent="." unique_id=1540190643]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.7
+anchor_bottom = 16.300001
+offset_right = 12.0
+offset_bottom = -6.1035156e-05
+script = ExtResource("6_ijcyw")
+
+[node name="VictoryTitle" type="Label" parent="VictoryScreen" unique_id=575900251]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.051000003
+anchor_bottom = 0.055000003
+offset_left = 375.0
+offset_top = 226.0
+offset_right = 689.83997
+offset_bottom = 314.14
+theme_override_font_sizes/font_size = 90
+text = "	VITÓRIA!"
+
+[node name="VictoryDescription" type="Label" parent="VictoryScreen" unique_id=1798357305]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 338.0
+offset_right = 719.0
+offset_bottom = 431.0
+theme_override_font_sizes/font_size = 40
+text = "Você Venceu."
+
+[node name="ContinueButton" type="Button" parent="VictoryScreen" unique_id=1575205178]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 394.0
+offset_right = 649.0
+offset_bottom = 448.0
+theme_override_font_sizes/font_size = 30
+text = "CONTINUAR"
+
+[connection signal="focus_entered" from="ActionMenu/GridContainer/AttackButton" to="." method="_on_attack_button_focus_entered"]
+[connection signal="pressed" from="ActionMenu/GridContainer/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="focus_entered" from="ActionMenu/GridContainer/DefendButton" to="." method="_on_defend_button_focus_entered"]
+[connection signal="pressed" from="ActionMenu/GridContainer/DefendButton" to="." method="_on_defend_button_pressed"]
+[connection signal="focus_entered" from="ActionMenu/GridContainer/SkillButton" to="." method="_on_skill_button_focus_entered"]
+[connection signal="pressed" from="ActionMenu/GridContainer/SkillButton" to="." method="_on_skill_button_pressed"]
+[connection signal="focus_entered" from="ActionMenu/GridContainer/ItemButton" to="." method="_on_item_button_focus_entered"]
+[connection signal="pressed" from="ActionMenu/GridContainer/ItemButton" to="." method="_on_item_button_pressed"]
+[connection signal="focus_entered" from="SkillMenu/VBoxContainer/PowerfulAttackButton" to="." method="_on_powerful_attack_button_focus_entered"]
+[connection signal="pressed" from="SkillMenu/VBoxContainer/PowerfulAttackButton" to="." method="_on_powerful_attack_button_pressed"]
+[connection signal="focus_entered" from="SkillMenu/VBoxContainer/InvincibleDefenseButton" to="." method="_on_invincible_defense_button_focus_entered"]
+[connection signal="pressed" from="SkillMenu/VBoxContainer/InvincibleDefenseButton" to="." method="_on_invincible_defense_button_pressed"]
+[connection signal="pressed" from="DefeatScreen/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="VictoryScreen/ContinueButton" to="." method="_on_continue_button_pressed"]
